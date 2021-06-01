@@ -213,6 +213,41 @@ insert into EMPRESTIMO
 	('--', '--', '', ''),
 	;
 	
+#1- Listar os livros que o título começa com a letra "a" e terminam com "s".
+	select * from LIVRO 
+	where titulo_lv like 'a%s';
+#2- Listar os Clientes que o último nome termina com o caractere "s".
+	select * from CLIENTE 
+	where nome_cl like '%s';
+#3- Listar o titulo, e a edição de todos os livros em ordem crescente quanto aos nomes.
+	select titulo_lv, edicao_lv  from LIVRO
+	order by asc titulo_lv;
+#4- Listar clientes do sexo masculino, agrupados por cidade e em ordem crescente quanto ao nome.
+	select * from CLIENTE
+	where sexo_cl = 'M'
+	group by cidade_end_cl
+	order by asc nome_cl;
+#5- Listar os funcionarios que tem mais de 30 anos
+	select * from FUNCIONARIO
+	where (SELECT DATEDIFF(year, data_nasc_f, '2021-06-10')) > 30;
+#6- Listar todos os clientes que possuem idade igual ou maior que 18 anos
+	select * from CLIENTE
+	where (SELECT DATEDIFF(year, data_nasc_cl, '2021-06-10')) >= 18;
+#7- Listar os clientes que não possuem nenhum livro emprestado, ordenados asc pelo nome
+	select * from CLIENTE 
+	where cpf_cl not in (SELECT nome_cl from EMPRESTIMO)
+	order by asc nome_cl;
+#8- Listar todos os funcionários que cadastraram pelo menos um livro do gênero Ação ou Comédia
+	select * from FUNCIONARIO
+	where 
+#9- Listar todos os livros que estão como 1° edição
+	select * from LIVRO
+	where edicao_lv = 1;
+#10- Listar os exemplares que nunca foram emprestados
+	select * from EXEMPLAR
+	where id_exemplar not in (SELECT id_exemplar from EMPRESTIMO);
+
+
 #CONSULTAS E RELATÓRIOS
 
 /*ANDRÉ
@@ -226,15 +261,15 @@ WEI
 1- Listar os livros que o título começa com a letra "a" e terminam com "s".
 2- Listar os Clientes que o último nome termina com o caractere "s".
 3- Listar o nome, e a edição de todos os livros em ordem crescente quanto aos nomes.
-4. 
-5. 
+4- Listar clientes do sexo masculino, agrupados por cidade e em ordem crescente quanto ao nome.
+5- Listar os funcionarios que tem mais de 30 anos
 
 TIAGO
-1.
-2.
-3.
-4. 
-5. 
+1 - Listar todos os clientes que possuem idade igual ou maior que 18 anos
+2 - Listar os clientes que não possuem nenhum livro emprestado, ordenados asc pelo nome
+3 - Listar todos os funcionários que cadastraram um livro do gênero Ação ou Comédia
+4 - Listar todos os livros que estão como 1° edição
+5 - Listar os exemplares que nunca foram emprestados
 
 JOÃO 
 1. Listar os livros que são de edições mais antigas que 7.
