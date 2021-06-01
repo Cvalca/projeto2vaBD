@@ -112,39 +112,39 @@ insert into LIVRO
 	('Alien', 'Forasteiro Fantoura', 5, 'Ficção', '111.111.111-11'),
 	('Memórias póstumas de Brás Cubas', 'Machado de Assis', 12, 'Literatura Nacional', '222.222.222-22'),
 	('Não seja um líder heroi', 'Conquer', 1, 'Coaching', '444.444.444-44'),
-	('Coraline', 'neil gaiman', 7, 'Fatasia', '111.111.111-11'),
+	('Coraline', 'Neil Gaiman', 7, 'Fatasia', '111.111.111-11'),
 	('Scooby-doo', 'WhereAreYou', 9, 'Mistério', '333.333.333-33'),
 	('Bíblia', 'Vários autores', 90, 'Religioso', '444.444.444-44'),
 	('Algoritmos Teoria e prática', 'Cormen', 14, 'Acadêmico', '111.111.111-11'),
 	('Game of Thrones', 'George RR Martin', 2, 'Fantasia', '333.333.333-33'),
 	('Sistema de Bancos de dados', 'Elmasri & Navathe', 1, 'Acadêmico', '111.111.111-11'),
-	('João e o Pé de feijão', 'autor desconhecido', 4, 'Fábula', '333.333.333-33'),
+	('João e o Pé de feijão', 'Autor desconhecido', 4, 'Fábula', '333.333.333-33'),
 	('Torá', 'Moisés', 50, 'Religioso', '444.444.444-44'),
 	('Branca de Neve e os sete anões', 'Autor desconhecido', 5, 'Literatura Estrangeira', '222.222.222-22');
 
 
-/*Exemplares:
-O pequeno príncipe: 6
-Trevas trevosas: 4
-Percy Jackson: 8
-Ace Ventura: 1
-Mortal Kombat: melhor que o filme: 2
-A morte dos amigues: 3
-The big foot: 10
-Uma paixão inesperada: 9
-Caras: 24
-Alien: 5
-Memórias póstumas de Brás Cubas: 3
-Não seja um líder heroi: 4
-Coraline: 30
-ScoobyDoo: 5
-Bíblia: 44
-Algoritmos Teoria e prática: 4
-Game of Thrones: 15
-Sistema de Bancos de dados: 3
-João e o Pé de feijão: 22
-Torá: 1
-Branca de Neve e os sete anões: 27
+/*Exemplares: tot = 230
+O pequeno príncipe: 6 INTERVALO: 1-6
+Trevas trevosas: 4 INTERVALO: 7-10
+Percy Jackson: 8 INTERVALO: 11-18
+Ace Ventura: 1 INTERVALO: 19
+Mortal Kombat: melhor que o filme: 2 INTERVALO: 20-21
+A morte dos amigues: 3 INTERVALO: 22-24
+The big foot: 10 INTERVALO: 25-34
+Uma paixão inesperada: 9 INTERVALO: 35-43
+Caras: 24 INTERVALO: 45-67
+Alien: 5 INTERVALO: 68-72
+Memórias póstumas de Brás Cubas: 3 INTERVALO: 73-75
+Não seja um líder heroi: 4 INTERVALO: 76-79
+Coraline: 30 INTERVALO: 80-109
+ScoobyDoo: 5 INTERVALO: 110-114
+Bíblia: 44 INTERVALO: 115-158
+Algoritmos Teoria e prática: 4 INTERVALO: 159-162
+Game of Thrones: 15 INTERVALO: 163-177
+Sistema de Bancos de dados: 3 INTERVALO: 178-180
+João e o Pé de feijão: 22 INTERVALO: 181-202
+Torá: 1 INTERVALO: 203
+Branca de Neve e os sete anões: 27 INTERVALO:  204-230
 
 */
 insert into EXEMPLAR
@@ -207,45 +207,125 @@ insert into EXEMPLAR
 	(default, 'Branca de Neve e os sete anões'), (default, 'Branca de Neve e os sete anões'), (default, 'Branca de Neve e os sete anões'), (default, 'Branca de Neve e os sete anões'), (default, 'Branca de Neve e os sete anões'), (default, 'Branca de Neve e os sete anões'), (default, 'Branca de Neve e os sete anões'), (default, 'Branca de Neve e os sete anões'), (default, 'Branca de Neve e os sete anões'), (default, 'Branca de Neve e os sete anões'), (default, 'Branca de Neve e os sete anões'), (default, 'Branca de Neve e os sete anões'), (default, 'Branca de Neve e os sete anões'), (default, 'Branca de Neve e os sete anões'), (default, 'Branca de Neve e os sete anões'), (default, 'Branca de Neve e os sete anões'), (default, 'Branca de Neve e os sete anões'), (default, 'Branca de Neve e os sete anões'), (default, 'Branca de Neve e os sete anões'), (default, 'Branca de Neve e os sete anões'), (default, 'Branca de Neve e os sete anões'), (default, 'Branca de Neve e os sete anões'), (default, 'Branca de Neve e os sete anões'), (default, 'Branca de Neve e os sete anões'), (default, 'Branca de Neve e os sete anões'), (default, 'Branca de Neve e os sete anões'), (default, 'Branca de Neve e os sete anões'),
 	(default, 'Torá');
 
+#Cadastrar emprestimo: Organizar por data para não se perder, e para não dar um exemplar ja emprestado para outro cliente
 insert into EMPRESTIMO
 	(data_emprestimo, data_devolucao, cpf_cl, id_exemplar)
-	values
-	('--', '--', '', ''),
+	values 
+	('--', '--', '666.666.666-66', '2'),
 	;
 	
 #1- Listar os livros que o título começa com a letra "a" e terminam com "s".
 	select * from LIVRO 
 	where titulo_lv like 'a%s';
+
 #2- Listar os Clientes que o último nome termina com o caractere "s".
 	select * from CLIENTE 
 	where nome_cl like '%s';
+
 #3- Listar o titulo, e a edição de todos os livros em ordem crescente quanto aos nomes.
 	select titulo_lv, edicao_lv  from LIVRO
-	order by asc titulo_lv;
+	order by titulo_lv asc;
+
 #4- Listar clientes do sexo masculino, agrupados por cidade e em ordem crescente quanto ao nome.
 	select * from CLIENTE
 	where sexo_cl = 'M'
 	group by cidade_end_cl
-	order by asc nome_cl;
+	order by nome_cl asc;
+
 #5- Listar os funcionarios que tem mais de 30 anos
 	select * from FUNCIONARIO
-	where (SELECT DATEDIFF(year, data_nasc_f, '2021-06-10')) > 30;
+	where (SELECT DATEDIFF(year, data_nasc_f, SYSDATETIME ())) > 30;
+
 #6- Listar todos os clientes que possuem idade igual ou maior que 18 anos
 	select * from CLIENTE
-	where (SELECT DATEDIFF(year, data_nasc_cl, '2021-06-10')) >= 18;
+	where (SELECT DATEDIFF(year, data_nasc_cl, SYSDATETIME ())) >= 18;
+
 #7- Listar os clientes que não possuem nenhum livro emprestado, ordenados asc pelo nome
 	select * from CLIENTE 
 	where cpf_cl not in (SELECT nome_cl from EMPRESTIMO)
-	order by asc nome_cl;
-#8- Listar todos os funcionários que cadastraram pelo menos um livro do gênero Ação ou Comédia
+	order by nome_cl asc;
+
+#8- Listar todos os funcionários que cadastraram pelo menos um livro do gênero Ação ou Comédia INCOMPLETOOOOOOOOOOOOOOOOOOOOOOOOO
 	select * from FUNCIONARIO
 	where 
+
 #9- Listar todos os livros que estão como 1° edição
 	select * from LIVRO
 	where edicao_lv = 1;
+
 #10- Listar os exemplares que nunca foram emprestados
 	select * from EXEMPLAR
 	where id_exemplar not in (SELECT id_exemplar from EMPRESTIMO);
+
+#11- Listar os livros que são de edições mais antigas que 7, ordenados ascendentemente pelos seus titulos.
+ 	select * from LIVRO
+ 	where edicao_lv < 7
+ 	order by titulo_lv asc;
+
+#12- Listar os funcionários que cadastraram mais que 4 livros e a quantidade de livros que eles cadastraram. INCOMPLETOOOOOOOOOOOOOOOOOOOO
+	select Ffrom FUNCIONARIO as F join LIVRO as L on F.cpf_cl = L.cpf_f
+	where (SELECT count (cpf_f) from LIVRO) > 4;
+
+#13- Listar os clientes que passaram mais de 10 dias com exemplares emprestados.INCOMPLETOOOOOOOOOOOOOOOOO
+	select * from CLIENTE
+	where 
+
+#14- Listar os títulos e a quantidade de exemplares dos livros que possuem como autor: "Autor desconhecido" ou "Vários autores".
+	select titulo_lv, count(*) from EXEMPLAR join LIVRO on EXEMPLAR.titulo_lv = LIVRO.titulo_lv
+	where LIVRO.autor_lv = 'autor desconhecido' or 'Vários autores'
+	group by titulo_lv;
+
+#15- Listar todos os livros em ordem alfabética e a quantidade de exemplares que eles possuem.
+	select titulo_lv, count(*) from EXEMPLAR
+	group by titulo_lv
+	order by asc titulo_lv;
+
+#16- Listar o cliente que mais pegou emprétimos dos livros de romance. INCOMPLETOOOOOOOOOOOOOOOOOO
+	select * from CLIENTE join EMPRESTIMO on CLIENTE.cpf_cl = EMPRESTIMO.cpf_cl join LIVRO on LIVRO.titulo_lv = EXEMPLAR.titulo_lv
+	where 
+
+#17- Consultar a média das idade das pessoas que pediram emprestados livros acadêmicos.
+	
+
+#18- Listar por livro quais foram os exemplares mais usados.
+
+
+#19- Frequência em que pessoas jovens (menores de 18 anos) pedem emprestado livro de ficção no ano de '2018'.
+	select *, count(*) from EMPRESTIMO
+	where (select 
+
+#20- Consultar qual o funcionário que mais cadastrou livros.
+
+
+#21- Dizer a quantidade de livros que cada gênero possui.
+	select genero_lv, count(*) from LIVRO
+	group by genero_lv;
+
+#22- Liste todos os livros que foram emprestados no mes de setembro de 2001 em ordem alfabética pelo seu título.
+
+
+#23- Consultar os 5 exemplares mais emprestados da biblioteca.
+
+
+#24- 
+
+
+#25- 
+
+
+#26- 
+
+
+#27- 
+
+
+#28- 
+
+
+#29- 
+
+
+#30- 
 
 
 #CONSULTAS E RELATÓRIOS
@@ -267,7 +347,7 @@ WEI
 TIAGO
 1 - Listar todos os clientes que possuem idade igual ou maior que 18 anos
 2 - Listar os clientes que não possuem nenhum livro emprestado, ordenados asc pelo nome
-3 - Listar todos os funcionários que cadastraram um livro do gênero Ação ou Comédia
+3 - Listar todos os funcionários que cadastraram pelo menos um livro do gênero Ação ou Comédia
 4 - Listar todos os livros que estão como 1° edição
 5 - Listar os exemplares que nunca foram emprestados
 
@@ -281,9 +361,9 @@ JOÃO
 DANIEL
 1. Listar o cliente que mais pegou emprétimos dos livros de romance.
 2. Consultar a média das idade das pessoas que pediram emprestados livros acadêmicos.
-3. 
-4.
-5.
+3. Listar por livro quais foram os exemplares mais usados.
+4. Frequência em que pessoas jovens (menores de 18 anos) pedem emprestado livro de ficção no ano de '2018'.
+5. Consultar qual o funcionário que mais cadastrou livros.
 
 DIEGO.
 1. Dizer a quantidade de livros que cada gênero possui.
