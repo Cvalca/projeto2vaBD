@@ -3,6 +3,8 @@ create database Biblioteca
 default character set utf8
 default collate utf8_general_ci;
 
+ drop database biblioteca;
+ 
 use Biblioteca;
 
 create table CLIENTE (
@@ -42,8 +44,8 @@ create table LIVRO (
 	titulo_lv varchar(60),
 	autor_lv varchar(60),
 	edicao_lv int,
-	genero_lv enum('Ação', 'Ficção', 'Terror', 'Comédia', 'Literatura Estrangeira', 'Romance', 'Revista', 'Ficção', 
-		'Suspense', 'Literatura Nacional', 'Coaching', 'Fatasia', 'Aventura', 'Mistério', 'Religioso', 'Acadêmico', 'Fábula'),
+	genero_lv enum('Ação', 'Ficção', 'Terror', 'Comédia', 'Literatura Estrangeira', 'Romance', 'Revista', 
+		'Suspense', 'Literatura Nacional', 'Coaching', 'Fantasia', 'Aventura', 'Mistério', 'Religioso', 'Acadêmico', 'Fábula'),
 	cpf_f varchar(14),
 
 	primary key (titulo_lv),
@@ -77,25 +79,25 @@ create table EMPRESTIMO (
 insert into FUNCIONARIO 
 	(cpf_f, data_nasc_f, sexo_f, nome_f, contato_f, rua_end_f, cep_end_f, numero_end_f, complemento_end_f, bairro_end_f, cidade_end_f, data_contratacao_f) 
 	values 
-	('111.111.111-11', '2001-02-21', 'M', 'João', '(11)11111-1111', 'Rua Alameda Slim', '11.111.111', 'apto', 'Tiroleio', 'Cidade Fantasma', '1998-02-21'),
-	('222.222.222-22', '1968-07-13', 'F', 'Maria', '(22)22222-2222', 'Rua Inventei Hoje', '22.222.222', 'casa', 'Tiroleio', 'Cidade Fantasma', '1998-02-21'),
-	('333.333.333-33', '1976-03-19', 'M', 'Adalberto', '(33)33333-3333', 'Rua Alameda Slim', '33.333.333', 'apto', 'Tiroleio', 'Cidade Fantasma', '1998-02-21'),
-	('444.444.444-44', '1982-12-01', 'M', 'Tiago', '(44)44444-4444', 'Rua Alameda Slim', '44.444.444', 'casa', 'Tiroleio', 'Cidade Fantasma', '1998-02-21'),
-	('555.555.555-55', '1992-05-30', 'F', 'Carla', '(55)55555-5555', 'Rua Alameda Slim', '55.555.555', 'casa', 'Tiroleio', 'Cidade Fantasma', '1998-02-21');
+	('111.111.111-11', '2001-02-21', 'M', 'João', '(11)11111-1111', 'Rua Alameda Slim', '11.111.111', 3, 'apto', 'Tiroleio', 'Cidade Fantasma', '1998-02-21'),
+	('222.222.222-22', '1968-07-13', 'F', 'Maria', '(22)22222-2222', 'Rua Inventei Hoje', '22.222.222', 487, 'casa', 'Tiroleio', 'Cidade Fantasma', '1998-02-21'),
+	('333.333.333-33', '1976-03-19', 'M', 'Adalberto', '(33)33333-3333', 'Rua Alameda Slim', '33.333.333', 123, 'apto', 'Tiroleio', 'Cidade Fantasma', '1998-02-21'),
+	('444.444.444-44', '1982-12-01', 'M', 'Tiago', '(44)44444-4444', 'Rua Alameda Slim', '44.444.444', 390, 'casa', 'Tiroleio', 'Cidade Fantasma', '1998-02-21'),
+	('555.555.555-55', '1992-05-30', 'F', 'Carla', '(55)55555-5555', 'Rua Alameda Slim', '55.555.555', 1095, 'casa', 'Tiroleio', 'Cidade Fantasma', '1998-02-21');
 
 insert into CLIENTE
 	(cpf_cl, data_nasc_cl, sexo_cl, nome_cl, contato_cl, rua_end_cl, cep_end_cl, numero_end_cl, complemento_end_cl, bairro_end_cl, cidade_end_cl)
 	values
-	('666.666.666-66', '2002-08-22', 'M', 'Dagoberto', '(66)66666-6666', 'Rua Alameda Slim', '66.666.666', 'casa', 'Tiroleio', 'Cidade Fantasma'),
-	('777.777.777-77', '1995-11-10', 'M', 'Paulo', '(77)77777-7777', 'Rua Maria Betania', '77.777.777', 'apto', 'Mpbairro', 'Cidade caetânea'),
-	('888.888.888-88', '1980-10-30', 'F', 'Josefina', '(88)88888-8888', 'Rua Alameda Slim', '88.888.888', 'apto', 'Tiroleio', 'Cidade Fantasma'),
-	('999.999.999-99', '2000-12-28', 'M', 'João', '(99)99999-9999', 'Rua Slim Shady', '99.999.999', 'casa', 'Tiroleio', 'Cidade Fantasma'),
-	('123.123.123-12', '2004-05-31', 'M', 'Carlos', '(12)12121-1212', 'Rua Alameda Slim', '12.121.121', 'apto', 'Tiroleio', 'Cidade Fantasma'),
-	('456.456.456-45', '1998-02-03', 'F', 'Tiana', '(34)34343-3434', 'Rua Alameda Slim', '34.343.343', 'casa', 'Tiroleio', 'Cidade Fantasma'),
-	('000.000.000-00', '1992-03-07', 'F', 'Kerline', '(56)56565-5656', 'Rua Alameda Slim', '56.565.565', 'casa', 'Tiroleio', 'Cidade Fantasma'),
-	('012.012.012-01', '1963-05-15', 'F', 'Karol', '(78)78787-7878', 'Rua Alameda Slim', '56.565.565', 'apto', 'Tiroleio', 'Cidade Fantasma'),
-	('345.345.345-34', '1970-04-25', 'M', 'Gilberto', '(90)90909-9090', 'Rua Alameda Slim', '78.787.787', 'casa', 'Tiroleio', 'Cidade Fantasma'),
-	('678.678.678-67', '1982-09-27', 'M', 'Daniel', '(01)01010-0101', 'Rua Alameda Slim', '90.909.909', 'casa', 'Tiroleio', 'Cidade Fantasma');
+	('666.666.666-66', '2002-08-22', 'M', 'Dagoberto', '(66)66666-6666', 'Rua Alameda Slim', '66.666.666', 338, 'casa', 'Tiroleio', 'Cidade Fantasma'),
+	('777.777.777-77', '1995-11-10', 'M', 'Paulo', '(77)77777-7777', 'Rua Maria Betania', '77.777.777', 981, 'apto', 'Mpbairro', 'Cidade caetânea'),
+	('888.888.888-88', '1980-10-30', 'F', 'Josefina', '(88)88888-8888', 'Rua Alameda Slim', '88.888.888', 155, 'apto', 'Tiroleio', 'Cidade Fantasma'),
+	('999.999.999-99', '2000-12-28', 'M', 'João', '(99)99999-9999', 'Rua Slim Shady', '99.999.999', 78, 'casa', 'Tiroleio', 'Cidade Fantasma'),
+	('123.123.123-12', '2004-05-31', 'M', 'Carlos', '(12)12121-1212', 'Rua Alameda Slim', '12.121.121', 98, 'apto', 'Tiroleio', 'Cidade Fantasma'),
+	('456.456.456-45', '1998-02-03', 'F', 'Tiana', '(34)34343-3434', 'Rua Alameda Slim', '34.343.343', 53, 'casa', 'Tiroleio', 'Cidade Fantasma'),
+	('000.000.000-00', '1992-03-07', 'F', 'Kerline', '(56)56565-5656', 'Rua Alameda Slim', '56.565.565', 007, 'casa', 'Tiroleio', 'Cidade Fantasma'),
+	('012.012.012-01', '1963-05-15', 'F', 'Karol', '(78)78787-7878', 'Rua Alameda Slim', '56.565.565', 13, 'apto', 'Tiroleio', 'Cidade Fantasma'),
+	('345.345.345-34', '1970-04-25', 'M', 'Gilberto', '(90)90909-9090', 'Rua Alameda Slim', '78.787.787', 17, 'casa', 'Tiroleio', 'Cidade Fantasma'),
+	('678.678.678-67', '1982-09-27', 'M', 'Daniel', '(01)01010-0101', 'Rua Alameda Slim', '90.909.909', 190, 'casa', 'Tiroleio', 'Cidade Fantasma');
 
 insert into LIVRO
 	(titulo_lv, autor_lv, edicao_lv, genero_lv, cpf_f)
@@ -105,14 +107,14 @@ insert into LIVRO
 	('Percy Jackson', 'Rick Riordan', 6, 'Aventura', '111.111.111-11'),
 	('Ace Ventura', 'Jim Carry', 3, 'Comédia', '444.444.444-44'),
 	('Mortal Kombat: melhor que o filme', 'Algum autor decente', 1, 'Ação', '222.222.222-22'),
-	('A morte dos amigues', 'Sidneiro ah biteiro', 2, 'Suspense', '333.333.333-33'),
+	('A morte dos amigues', 'Sidneiro ah biteiro', 24, 'Suspense', '333.333.333-33'),
 	('The big foot', 'American Stranger', 9, 'Literatura Estrangeira', '111.111.111-11'),
 	('Uma paixão inesperada', 'Ela e o namorado dela', 3, 'Romance', '222.222.222-22'),
 	('Caras', 'Globo', 1, 'Revista', '444.444.444-44'),
 	('Alien', 'Forasteiro Fantoura', 5, 'Ficção', '111.111.111-11'),
 	('Memórias póstumas de Brás Cubas', 'Machado de Assis', 12, 'Literatura Nacional', '222.222.222-22'),
 	('Não seja um líder heroi', 'Conquer', 1, 'Coaching', '444.444.444-44'),
-	('Coraline', 'Neil Gaiman', 7, 'Fatasia', '111.111.111-11'),
+	('Coraline', 'Neil Gaiman', 7, 'Fantasia', '111.111.111-11'),
 	('Scooby-doo', 'WhereAreYou', 9, 'Mistério', '333.333.333-33'),
 	('Bíblia', 'Vários autores', 90, 'Religioso', '444.444.444-44'),
 	('Algoritmos Teoria e prática', 'Cormen', 14, 'Acadêmico', '111.111.111-11'),
@@ -123,30 +125,32 @@ insert into LIVRO
 	('Branca de Neve e os sete anões', 'Autor desconhecido', 5, 'Literatura Estrangeira', '222.222.222-22');
 
 
-/*Exemplares: tot = 230
-O pequeno príncipe: 6 INTERVALO: 1-6
-Trevas trevosas: 4 INTERVALO: 7-10
-Percy Jackson: 8 INTERVALO: 11-18
-Ace Ventura: 1 INTERVALO: 19
-Mortal Kombat: melhor que o filme: 2 INTERVALO: 20-21
-A morte dos amigues: 3 INTERVALO: 22-24
-The big foot: 10 INTERVALO: 25-34
-Uma paixão inesperada: 9 INTERVALO: 35-43
-Caras: 24 INTERVALO: 45-67
-Alien: 5 INTERVALO: 68-72
-Memórias póstumas de Brás Cubas: 3 INTERVALO: 73-75
-Não seja um líder heroi: 4 INTERVALO: 76-79
-Coraline: 30 INTERVALO: 80-109
-ScoobyDoo: 5 INTERVALO: 110-114
-Bíblia: 44 INTERVALO: 115-158
-Algoritmos Teoria e prática: 4 INTERVALO: 159-162
-Game of Thrones: 15 INTERVALO: 163-177
-Sistema de Bancos de dados: 3 INTERVALO: 178-180
-João e o Pé de feijão: 22 INTERVALO: 181-202
-Torá: 1 INTERVALO: 203
-Branca de Neve e os sete anões: 27 INTERVALO:  204-230
+/*Exemplares: tot = 232
+O pequeno príncipe: 7 INTERVALO: 1-7
+Trevas trevosas: 4 INTERVALO: 8-11
+Percy Jackson: 8 INTERVALO: 12-19
+Ace Ventura: 1 INTERVALO: 20
+Mortal Kombat: melhor que o filme: 2 INTERVALO: 21-22
+A morte dos amigues: 3 INTERVALO: 23-25
+The big foot: 10 INTERVALO: 26-35
+Uma paixão inesperada: 9 INTERVALO: 36-44
+Caras: 24 INTERVALO: 45-68
+Alien: 5 INTERVALO: 69-73
+Memórias póstumas de Brás Cubas: 3 INTERVALO: 74-76
+Não seja um líder heroi: 4 INTERVALO: 77-80
+Coraline: 31 INTERVALO: 81-111
+ScoobyDoo: 5 INTERVALO: 112-116
+Bíblia: 44 INTERVALO: 117-160
+Algoritmos Teoria e prática: 4 INTERVALO: 161-164
+Game of Thrones: 15 INTERVALO: 165-179
+Sistema de Bancos de dados: 3 INTERVALO: 180-182
+João e o Pé de feijão: 22 INTERVALO: 183-204
+Torá: 1 INTERVALO: 205
+Branca de Neve e os sete anões: 27 INTERVALO:  206-232
 
 */
+insert into EXEMPLAR (titulo_lv) values ('O pequeno príncipe');
+
 insert into EXEMPLAR
 	(id_exemplar, titulo_lv)
 	values
@@ -198,7 +202,7 @@ insert into EXEMPLAR
 	(default, 'Memórias póstumas de Brás Cubas'), (default, 'Memórias póstumas de Brás Cubas'),  (default, 'Memórias póstumas de Brás Cubas'), 
 	(default, 'Não seja um líder heroi'), (default, 'Não seja um líder heroi'), (default, 'Não seja um líder heroi'), (default, 'Não seja um líder heroi'), 
 	(default, 'Coraline'), (default, 'Coraline'), (default, 'Coraline'), (default, 'Coraline'), (default, 'Coraline'), (default, 'Coraline'), (default, 'Coraline'), (default, 'Coraline'), (default, 'Coraline'), (default, 'Coraline'), (default, 'Coraline'), (default, 'Coraline'), (default, 'Coraline'), (default, 'Coraline'), (default, 'Coraline'), (default, 'Coraline'), (default, 'Coraline'), (default, 'Coraline'), (default, 'Coraline'), (default, 'Coraline'), (default, 'Coraline'), (default, 'Coraline'), (default, 'Coraline'), (default, 'Coraline'), (default, 'Coraline'), (default, 'Coraline'), (default, 'Coraline'), (default, 'Coraline'), (default, 'Coraline'), (default, 'Coraline'), (default, 'Coraline'), 
-	(default, 'ScoobyDoo'), (default, 'ScoobyDoo'),  (default, 'ScoobyDoo'), (default, 'ScoobyDoo'), (default, 'ScoobyDoo'), 
+	(default, 'Scooby-doo'), (default, 'Scooby-doo'),  (default, 'Scooby-doo'), (default, 'Scooby-doo'), (default, 'Scooby-doo'), 
 	(default, 'Bíblia'), (default, 'Bíblia'), (default, 'Bíblia'), (default, 'Bíblia'), (default, 'Bíblia'), (default, 'Bíblia'), (default, 'Bíblia'), (default, 'Bíblia'), (default, 'Bíblia'), (default, 'Bíblia'), (default, 'Bíblia'), (default, 'Bíblia'), (default, 'Bíblia'), (default, 'Bíblia'), (default, 'Bíblia'), (default, 'Bíblia'), (default, 'Bíblia'), (default, 'Bíblia'), (default, 'Bíblia'), (default, 'Bíblia'), (default, 'Bíblia'), (default, 'Bíblia'), (default, 'Bíblia'), (default, 'Bíblia'), (default, 'Bíblia'), (default, 'Bíblia'), (default, 'Bíblia'), (default, 'Bíblia'), (default, 'Bíblia'), (default, 'Bíblia'), (default, 'Bíblia'), (default, 'Bíblia'), (default, 'Bíblia'), (default, 'Bíblia'), (default, 'Bíblia'), (default, 'Bíblia'), (default, 'Bíblia'), (default, 'Bíblia'), (default, 'Bíblia'), (default, 'Bíblia'), (default, 'Bíblia'), (default, 'Bíblia'), (default, 'Bíblia'), (default, 'Bíblia'), 
 	(default, 'Algoritmos Teoria e prática'), (default, 'Algoritmos Teoria e prática'), (default, 'Algoritmos Teoria e prática'), (default, 'Algoritmos Teoria e prática'), 
 	(default, 'Game of Thrones'), (default, 'Game of Thrones'), (default, 'Game of Thrones'), (default, 'Game of Thrones'), (default, 'Game of Thrones'), (default, 'Game of Thrones'), (default, 'Game of Thrones'), (default, 'Game of Thrones'), (default, 'Game of Thrones'), (default, 'Game of Thrones'), (default, 'Game of Thrones'), (default, 'Game of Thrones'), (default, 'Game of Thrones'), (default, 'Game of Thrones'), (default, 'Game of Thrones'), 
@@ -214,40 +218,66 @@ insert into EMPRESTIMO
 	('--', '--', '666.666.666-66', '2'),
 	;
 	
-#1- Listar os livros que o título começa com a letra "a" e terminam com "s".
-	select * from LIVRO 
-	where titulo_lv like 'a%s';
+#1. Listar todos os funcionários em ordem ascendente por nome.
+	select * from FUNCIONARIO order by nome_f asc;
 
-#2- Listar os Clientes que o último nome termina com o caractere "s".
-	select * from CLIENTE 
-	where nome_cl like '%s';
+#2. Listar todos os livros em ordem ascendente por título.
+	select * from LIVRO order by titulo_lv asc;
 
-#3- Listar o titulo, e a edição de todos os livros em ordem crescente quanto aos nomes.
-	select titulo_lv, edicao_lv  from LIVRO
-	order by titulo_lv asc;
+#3. Listar todos os exemplares em ordem ascendente por id.
+	select * from EXEMPLAR order by id_exemplar asc;
 
-#4- Listar clientes do sexo masculino, agrupados por cidade e em ordem crescente quanto ao nome.
-	select * from CLIENTE
-	where sexo_cl = 'M'
-	group by cidade_end_cl
-	order by nome_cl asc;
+#4. Listar todos os empréstimos.
+	select * from EMPRESTIMO;
 
-#5- Listar os funcionarios que tem mais de 30 anos
-	select * from FUNCIONARIO
-	where (SELECT DATEDIFF(year, data_nasc_f, SYSDATETIME ())) > 30;
+#5. Listar todos os clientes em ordem ascendente por nome.
+	select * from CLIENTE order by nome_cl asc;
 
-#6- Listar todos os clientes que possuem idade igual ou maior que 18 anos
-	select * from CLIENTE
-	where (SELECT DATEDIFF(year, data_nasc_cl, SYSDATETIME ())) >= 18;
+#6. Listar os clientes que passaram mais de 15 dias com exemplares emprestados, 
+#pois a biblioteca aplica multa para os que passam de 15 dias.
+	select * from CLIENTE where (SELECT DATEDIFF(data_emprestimo, data_devolucao) from EMPRESTIMO) > 15;
 
-#7- Listar os clientes que não possuem nenhum livro emprestado, ordenados asc pelo nome
+#7. Dizer a quantidade de livros que cada gênero possui.
+	select genero_lv, count(*) from LIVRO group by genero_lv;
+
+#8. Listar os livros ordenados ascendentemente por gênero e ascendentemente por titulo.
+ 	select * from LIVRO order by genero_lv asc;
+
+#9. Liste todos os exemplares que foram emprestados num ano em ordem alfabética pelo seu título.
+	select 
+
+#10. Consultar os 5 exemplares mais emprestados na biblioteca (saber quais exemplares estão mais gastos).
+
+#11. Consultar a média das idades das pessoas que pediram emprestados livros acadêmicos.
+
+#12. Listar os livros ordenados ascendentemente pelos autores e ascendentemente pelo título.
+
+#13. Listar todos os livros em ordem alfabética (ascendente pelo título) e a quantidade de exemplares que eles possuem.
+
+#14. Dizer a quantidade de livros em ordem decrescente agrupados por autor.
+
+#15. Listar a quantidade de exemplares emprestados agrupados por ano e ordenados ascendentemente por ano.
+
+#16. Listar a quantidade de livros cadastrados por cada funcionário.
+
+#17. Listar todos os livros que estão como 1° edição.
+
+#18. Listar os exemplares que nunca foram emprestados.
+
+#19. Consultar o gênero que possui mais exemplares emprestados.
+
+#20. Consultar os 5 livros que tiveram a maior quantidade de exemplares emprestados (ver os livros mais populares).
+
+#21. Consultar os 5 livros que tiveram a menor quantidade de exemplares emprestados (ver os livros menos populares).
+
+#22. Listar os nomes e os CPFs dos clientes que pegaram mais exemplares emprestados.
+
+
+ #Listar os clientes que não possuem nenhum livro emprestado, ordenados asc pelo nome
 	select * from CLIENTE 
 	where cpf_cl not in (SELECT nome_cl from EMPRESTIMO)
 	order by nome_cl asc;
 
-#8- Listar todos os funcionários que cadastraram pelo menos um livro do gênero Ação ou Comédia INCOMPLETOOOOOOOOOOOOOOOOOOOOOOOOO
-	select * from FUNCIONARIO
-	where 
 
 #9- Listar todos os livros que estão como 1° edição
 	select * from LIVRO
@@ -257,119 +287,15 @@ insert into EMPRESTIMO
 	select * from EXEMPLAR
 	where id_exemplar not in (SELECT id_exemplar from EMPRESTIMO);
 
-#11- Listar os livros que são de edições mais antigas que 7, ordenados ascendentemente pelos seus titulos.
- 	select * from LIVRO
- 	where edicao_lv < 7
- 	order by titulo_lv asc;
 
-#12- Listar os funcionários que cadastraram mais que 4 livros e a quantidade de livros que eles cadastraram. INCOMPLETOOOOOOOOOOOOOOOOOOOO
-	select Ffrom FUNCIONARIO as F join LIVRO as L on F.cpf_cl = L.cpf_f
-	where (SELECT count (cpf_f) from LIVRO) > 4;
-
-#13- Listar os clientes que passaram mais de 10 dias com exemplares emprestados.INCOMPLETOOOOOOOOOOOOOOOOO
-	select * from CLIENTE
-	where 
-
-#14- Listar os títulos e a quantidade de exemplares dos livros que possuem como autor: "Autor desconhecido" ou "Vários autores".
-	select titulo_lv, count(*) from EXEMPLAR join LIVRO on EXEMPLAR.titulo_lv = LIVRO.titulo_lv
-	where LIVRO.autor_lv = 'autor desconhecido' or 'Vários autores'
-	group by titulo_lv;
 
 #15- Listar todos os livros em ordem alfabética e a quantidade de exemplares que eles possuem.
 	select titulo_lv, count(*) from EXEMPLAR
 	group by titulo_lv
 	order by asc titulo_lv;
 
-#16- Listar o cliente que mais pegou emprétimos dos livros de romance. INCOMPLETOOOOOOOOOOOOOOOOOO
-	select * from CLIENTE join EMPRESTIMO on CLIENTE.cpf_cl = EMPRESTIMO.cpf_cl join LIVRO on LIVRO.titulo_lv = EXEMPLAR.titulo_lv
-	where 
-
-#17- Consultar a média das idade das pessoas que pediram emprestados livros acadêmicos.
-	
-
-#18- Listar por livro quais foram os exemplares mais usados.
-
-
-#19- Frequência em que pessoas jovens (menores de 18 anos) pedem emprestado livro de ficção no ano de '2018'.
-	select *, count(*) from EMPRESTIMO
-	where (select 
-
-#20- Consultar qual o funcionário que mais cadastrou livros.
-
 
 #21- Dizer a quantidade de livros que cada gênero possui.
 	select genero_lv, count(*) from LIVRO
 	group by genero_lv;
-
-#22- Liste todos os livros que foram emprestados no mes de setembro de 2001 em ordem alfabética pelo seu título.
-
-
-#23- Consultar os 5 exemplares mais emprestados da biblioteca.
-
-
-#24- 
-
-
-#25- 
-
-
-#26- 
-
-
-#27- 
-
-
-#28- 
-
-
-#29- 
-
-
-#30- 
-
-
-#CONSULTAS E RELATÓRIOS
-
-/*ANDRÉ
-1.
-2.
-3.
-4. 
-5. 
-
-WEI
-1- Listar os livros que o título começa com a letra "a" e terminam com "s".
-2- Listar os Clientes que o último nome termina com o caractere "s".
-3- Listar o nome, e a edição de todos os livros em ordem crescente quanto aos nomes.
-4- Listar clientes do sexo masculino, agrupados por cidade e em ordem crescente quanto ao nome.
-5- Listar os funcionarios que tem mais de 30 anos
-
-TIAGO
-1 - Listar todos os clientes que possuem idade igual ou maior que 18 anos
-2 - Listar os clientes que não possuem nenhum livro emprestado, ordenados asc pelo nome
-3 - Listar todos os funcionários que cadastraram pelo menos um livro do gênero Ação ou Comédia
-4 - Listar todos os livros que estão como 1° edição
-5 - Listar os exemplares que nunca foram emprestados
-
-JOÃO 
-1. Listar os livros que são de edições mais antigas que 7.
-2. Listar os funcionários que cadastraram mais que 4 livros e a quantidade de livros que eles cadastraram.
-3. Listar os clientes que passaram mais de 10 dias com exemplares emprestados.
-4. Listar os títulos e a quantidade de exemplares dos livros que possuem como autor: "Autor desconhecido" ou "Vários autores".
-5. Listar todos os livros em ordem alfabética e a quantidade de exemplares que eles possuem.
-
-DANIEL
-1. Listar o cliente que mais pegou emprétimos dos livros de romance.
-2. Consultar a média das idade das pessoas que pediram emprestados livros acadêmicos.
-3. Listar por livro quais foram os exemplares mais usados.
-4. Frequência em que pessoas jovens (menores de 18 anos) pedem emprestado livro de ficção no ano de '2018'.
-5. Consultar qual o funcionário que mais cadastrou livros.
-
-DIEGO.
-1. Dizer a quantidade de livros que cada gênero possui.
-2. Liste todos os livros que foram emprestados no mes de setembro de 2001 em ordem alfabética pelo seu título.
-3. Consultar os 5 exemplares mais emprestados da biblioteca.
-4. 
-5. 
-*/
 
