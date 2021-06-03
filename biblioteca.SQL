@@ -241,37 +241,51 @@ insert into EMPRESTIMO
 	select genero_lv, count(*) from LIVRO group by genero_lv;
 
 #8. Listar os livros ordenados ascendentemente por gênero e ascendentemente por titulo.
- 	select * from LIVRO order by genero_lv asc;
+ 	select * from LIVRO order by genero_lv asc, titulo_lv asc;
 
 #9. Liste todos os exemplares que foram emprestados num ano em ordem alfabética pelo seu título.
 	select 
 
 #10. Consultar os 5 exemplares mais emprestados na biblioteca (saber quais exemplares estão mais gastos).
-
+	
 #11. Consultar a média das idades das pessoas que pediram emprestados livros acadêmicos.
+	select AVG((SELECT DATEDIFF(year, data_nasc_cl, sysdate()) from CLIENTE)) from CLIENTE as C join EMPRESTIMO as E on C.cpf_cl = E.cpf_cl
+	where 
 
 #12. Listar os livros ordenados ascendentemente pelos autores e ascendentemente pelo título.
+	select * from LIVRO order by autor_lv asc, titulo_lv asc;
 
 #13. Listar todos os livros em ordem alfabética (ascendente pelo título) e a quantidade de exemplares que eles possuem.
+ 	select titulo_lv, count(*) from EXEMPLAR group by titulo_lv; 
 
 #14. Dizer a quantidade de livros em ordem decrescente agrupados por autor.
+	select count(*) from LIVRO group by autor_lv order by count(*) desc;
 
 #15. Listar a quantidade de exemplares emprestados agrupados por ano e ordenados ascendentemente por ano.
+	select from LIVRO as L join EXEMPLAR as E on L.titulo_lv = E.titulo_lv
+	group by
 
 #16. Listar a quantidade de livros cadastrados por cada funcionário.
+	select F.cpf_f, F.nome_f, count(*) from FUNCIONARIO as F join LIVRO as L on F.cpf_f = L.cpf_f
+	where
 
 #17. Listar todos os livros que estão como 1° edição.
+	select * from LIVRO where edicao_lv = 1;
 
 #18. Listar os exemplares que nunca foram emprestados.
+	select * from EXEMPLAR where id_exemplar not in (select id_exemplar from EMPRESTIMO);
 
 #19. Consultar o gênero que possui mais exemplares emprestados.
+	select 
 
 #20. Consultar os 5 livros que tiveram a maior quantidade de exemplares emprestados (ver os livros mais populares).
-
+	
+	
 #21. Consultar os 5 livros que tiveram a menor quantidade de exemplares emprestados (ver os livros menos populares).
+	
 
 #22. Listar os nomes e os CPFs dos clientes que pegaram mais exemplares emprestados.
-
+	
 
  #Listar os clientes que não possuem nenhum livro emprestado, ordenados asc pelo nome
 	select * from CLIENTE 
