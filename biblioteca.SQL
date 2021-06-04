@@ -269,8 +269,8 @@ insert into EMPRESTIMO
 	select F.cpf_f, F.nome_f, count(*) from FUNCIONARIO as F join LIVRO as L on F.cpf_f = L.cpf_f
 	where
 
-#17. Listar todos os livros que estão como 1° edição.
-	select * from LIVRO where edicao_lv = 1;
+#17. Listar todos os livros que estão como 1° edição ordenado pelo título.
+	select * from LIVRO where edicao_lv = 1 order by titulo_lv;
 
 #18. Listar os exemplares que nunca foram emprestados.
 	select * from EXEMPLAR where id_exemplar not in (select id_exemplar from EMPRESTIMO);
@@ -287,10 +287,14 @@ insert into EMPRESTIMO
 #22. Listar os nomes e os CPFs dos clientes que pegaram mais exemplares emprestados.
 	
 
- #Listar os clientes que não possuem nenhum livro emprestado, ordenados asc pelo nome
-	select * from CLIENTE 
-	where cpf_cl not in (SELECT nome_cl from EMPRESTIMO)
-	order by nome_cl asc;
+  
+
+#ALGUNS QUE PODEM AJUDAR A GNT A FAZER OS QUE JA TÊM  
+# - Listar todos os clientes que possuem idade igual ou maior que 18 anos, ordenados do mais velho até o mais jovem
+    select * from cliente
+    where TIMESTAMPDIFF(year, data_nasc_cl, CURDATE()) >= 18
+    order by data_nasc_cl;
+    
 
 
 #9- Listar todos os livros que estão como 1° edição
