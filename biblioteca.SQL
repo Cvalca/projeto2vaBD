@@ -238,19 +238,22 @@ insert into EMPRESTIMO
 	select * from CLIENTE where (SELECT DATEDIFF(data_emprestimo, data_devolucao) from EMPRESTIMO) > 15;
 
 #7. Dizer a quantidade de livros que cada gênero possui.
-	select genero_lv, count(*) from LIVRO group by genero_lv;
+	select genero_lv, count(*) from LIVRO group by genero_lv order by cast(genero_lv as char);
 
 #8. Listar os livros ordenados ascendentemente por gênero e ascendentemente por titulo.
- 	select * from LIVRO order by genero_lv asc, titulo_lv asc;
+ 	select * from LIVRO order by cast(genero_lv as char) asc, titulo_lv asc;
 
 #9. Liste todos os exemplares que foram emprestados num ano em ordem alfabética pelo seu título.
-	select 
+	
 
 #10. Consultar os 5 exemplares mais emprestados na biblioteca (saber quais exemplares estão mais gastos).
 	
+
 #11. Consultar a média das idades das pessoas que pediram emprestados livros acadêmicos.
-	select AVG((SELECT DATEDIFF(year, data_nasc_cl, sysdate()) from CLIENTE)) from CLIENTE as C join EMPRESTIMO as E on C.cpf_cl = E.cpf_cl
-	where 
+    select avg(TIMESTAMPDIFF(year, c.data_nasc_cl, CURDATE())) from cliente c
+    join emprestimo e join livro l join exemplar x
+    on c.cpf_cl = e.cpf_cl
+    where e.id_exemplar = x.id_exemplar && x.titulo_lv = l.titulo_lv && l.genero_lv = 'Acadêmico';
 
 #12. Listar os livros ordenados ascendentemente pelos autores e ascendentemente pelo título.
 	select * from LIVRO order by autor_lv asc, titulo_lv asc;
@@ -262,12 +265,17 @@ insert into EMPRESTIMO
 	select count(*) from LIVRO group by autor_lv order by count(*) desc;
 
 #15. Listar a quantidade de exemplares emprestados agrupados por ano e ordenados ascendentemente por ano.
-	select from LIVRO as L join EXEMPLAR as E on L.titulo_lv = E.titulo_lv
-	group by
+    select year(e.data_emprestimo) as ano, count(*) from exemplar x
+    join emprestimo e
+    on x.id_exemplar = e.id_exemplar
+    group by year(e.data_emprestimo)
+    order by year(e.data_emprestimo);
 
 #16. Listar a quantidade de livros cadastrados por cada funcionário.
-	select F.cpf_f, F.nome_f, count(*) from FUNCIONARIO as F join LIVRO as L on F.cpf_f = L.cpf_f
-	where
+    select nome_f, f.cpf_f, count(*) from livro l
+    join funcionario f
+    on l.cpf_f = f.cpf_f
+    group by l.cpf_f;
 
 #17. Listar todos os livros que estão como 1° edição ordenado pelo título.
 	select * from LIVRO where edicao_lv = 1 order by titulo_lv;
@@ -276,7 +284,7 @@ insert into EMPRESTIMO
 	select * from EXEMPLAR where id_exemplar not in (select id_exemplar from EMPRESTIMO);
 
 #19. Consultar o gênero que possui mais exemplares emprestados.
-	select 
+	
 
 #20. Consultar os 5 livros que tiveram a maior quantidade de exemplares emprestados (ver os livros mais populares).
 	
@@ -285,35 +293,3 @@ insert into EMPRESTIMO
 	
 
 #22. Listar os nomes e os CPFs dos clientes que pegaram mais exemplares emprestados.
-	
-
-  
-
-#ALGUNS QUE PODEM AJUDAR A GNT A FAZER OS QUE JA TÊM  
-# - Listar todos os clientes que possuem idade igual ou maior que 18 anos, ordenados do mais velho até o mais jovem
-    select * from cliente
-    where TIMESTAMPDIFF(year, data_nasc_cl, CURDATE()) >= 18
-    order by data_nasc_cl;
-    
-
-
-#9- Listar todos os livros que estão como 1° edição
-	select * from LIVRO
-	where edicao_lv = 1;
-
-#10- Listar os exemplares que nunca foram emprestados
-	select * from EXEMPLAR
-	where id_exemplar not in (SELECT id_exemplar from EMPRESTIMO);
-
-
-
-#15- Listar todos os livros em ordem alfabética e a quantidade de exemplares que eles possuem.
-	select titulo_lv, count(*) from EXEMPLAR
-	group by titulo_lv
-	order by asc titulo_lv;
-
-
-#21- Dizer a quantidade de livros que cada gênero possui.
-	select genero_lv, count(*) from LIVRO
-	group by genero_lv;
-
