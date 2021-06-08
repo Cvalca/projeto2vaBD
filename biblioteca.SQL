@@ -95,9 +95,24 @@ insert into CLIENTE
 	('123.123.123-12', '2004-05-31', 'M', 'Carlos', '(12)12121-1212', 'Rua Alameda Slim', '12.121.121', 98, 'apto', 'Tiroleio', 'Cidade Fantasma'),
 	('456.456.456-45', '1998-02-03', 'F', 'Tiana', '(34)34343-3434', 'Rua Alameda Slim', '34.343.343', 53, 'casa', 'Tiroleio', 'Cidade Fantasma'),
 	('000.000.000-00', '1992-03-07', 'F', 'Kerline', '(56)56565-5656', 'Rua Alameda Slim', '56.565.565', 007, 'casa', 'Tiroleio', 'Cidade Fantasma'),
-	('012.012.012-01', '1963-05-15', 'F', 'Karol', '(78)78787-7878', 'Rua Alameda Slim', '56.565.565', 13, 'apto', 'Tiroleio', 'Cidade Fantasma'),
+	('012.012.012-01', '1963-05-15', 'F', 'Karol', '(78)78787-7878', 'Rua Alameda Slim', '45.454.454', 13, 'apto', 'Tiroleio', 'Cidade Fantasma'),
 	('345.345.345-34', '1970-04-25', 'M', 'Gilberto', '(90)90909-9090', 'Rua Alameda Slim', '78.787.787', 17, 'casa', 'Tiroleio', 'Cidade Fantasma'),
-	('678.678.678-67', '1982-09-27', 'M', 'Daniel', '(01)01010-0101', 'Rua Alameda Slim', '90.909.909', 190, 'casa', 'Tiroleio', 'Cidade Fantasma');
+	('678.678.678-67', '1996-02-22', 'M', 'Daniel', '(01)01010-0101', 'Rua Alameda Slim', '90.909.909', 190, 'casa', 'Tiroleio', 'Cidade Fantasma'),
+	('901.901.901-90', '1975-09-27', 'F', 'Jandiraí', '(23)2323-2323', 'Rua Alameda Slim', '01.010.010', 46, 'casa', 'Tiroleio', 'Cidade Fantasma'),
+	('234.234.234-23', '2000-04-22', 'M', 'Dimitri', '(09)09090-0909', 'Rua Alameda Slim', '23.232.232', 23, 'casa', 'Tiroleio', 'Cidade Fantasma'),
+	('567.567.567-56', '1980-09-12', 'M', 'Josué', '(45)45454-4545', 'Rua Alameda Slim', '67.676.676', 97, 'apto', 'Tiroleio', 'Cidade Fantasma'),
+	('890.890.890-89', '1999-01-30', 'M', 'Josuke', '(98)98989-9898', 'Rua Alameda Slim', '89.898.898', 1490, 'casa', 'Tiroleio', 'Cidade Fantasma'),
+	('098.098.098-09', '1973-02-25', 'M', 'José Macarotti', '(67)67676-6767', 'Rua Alameda Slim', '09.090.090', 908, 'apto', 'Tiroleio', 'Cidade Fantasma'),
+	('876.876.876-87', '2002-10-02', 'M', 'GG', '(87)87878-8787', 'Rua Alameda Slim', '98.989.989', 15, 'casa', 'Tiroleio', 'Cidade Fantasma'),
+	('765.765.765-76', '2003-01-06', 'F', 'Camila', '(89)01010-0101', 'Rua Alameda Slim', '87.878.878', 743, 'apto', 'Tiroleio', 'Cidade Fantasma'),
+	('654.654.654-65', '2001-02-08', 'F', 'Débora', '(10)10101-1010', 'Rua Alameda Slim', '76.767.767', 78, 'apto', 'Tiroleio', 'Cidade Fantasma'),
+	('543.543.543-54', '1993-03-19', 'F', 'Maria Eduarda', '(76)76767-7676', 'Rua Alameda Slim', '65.656.656', 168, 'casa', 'Tiroleio', 'Cidade Fantasma'),
+	('432.432.432-43', '1997-04-26', 'F', 'Beatriz', '(65)65656-6565', 'Rua Alameda Slim', '54.545.545', 542, 'casa', 'Tiroleio', 'Cidade Fantasma'),
+	('321.321.321-32', '1984-05-29', 'F', 'Jéssica', '(54)54545-5454', 'Rua Alameda Slim', '43.434.434', 378, 'apto', 'Tiroleio', 'Cidade Fantasma'),
+	('210.210.210-21', '1964-06-25', 'M', 'Jonathan', '(43)43434-4343', 'Rua Alameda Slim', '32.323.323', 931, 'casa', 'Tiroleio', 'Cidade Fantasma'),
+	('109.109.109-10', '1956-08-30', 'M', 'Wei', '(32)32323-3232', 'Rua Alameda Slim', '21.212.212', 832, 'casa', 'Tiroleio', 'Cidade Fantasma'),
+	('154.276.143-87', '1977-07-31', 'M', 'André', '(21)21212-2121', 'Rua Alameda Slim', '10.101.101', 14, 'apto', 'Tiroleio', 'Cidade Fantasma'),
+	('122.535.678-19', '2000-11-27', 'M', 'Felipe', '(24)92567-3254', 'Rua Alameda Slim', '13.456.325', 1, 'casa', 'Tiroleio', 'Cidade Fantasma');
 
 insert into LIVRO
 	(titulo_lv, autor_lv, edicao_lv, genero_lv, cpf_f)
