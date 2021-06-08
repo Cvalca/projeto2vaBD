@@ -834,6 +834,7 @@ insert into EMPRESTIMO
 	('2015-07-07', '2015-07-16', '321.321.321-32', '229'),
 	('2002-12-18', '2003-01-07', '999.999.999-99', '49'),
 	('2021-04-17', '2021-05-08', '901.901.901-90', '64'),
+	('2021-05-09', '2021-05-24', '999.999.999-99', '64'),
 	('2001-05-31', '2001-06-28', '122.535.678-19', '159'),
 	('2005-10-10', '2005-10-22', '890.890.890-89', '218'),
 	('2012-02-23', '2012-03-06', '122.535.678-19', '188'),
@@ -1018,7 +1019,6 @@ insert into EMPRESTIMO
 	('1999-11-12', '1999-11-24', '654.654.654-65', '24'),
 	('2018-06-24', '2018-07-11', '999.999.999-99', '121'),
 	('2010-09-24', '2010-09-29', '654.654.654-65', '77'),
-	('2021-04-29', '2021-05-24', '999.999.999-99', '64'),
 	('2020-08-25', '2020-09-11', '543.543.543-54', '215'),
 	('2021-01-16', '2021-02-09', '098.098.098-09', '93'),
 	('2000-06-16', '2000-06-30', '234.234.234-23', '88'),
@@ -1227,10 +1227,16 @@ insert into EMPRESTIMO
  	select * from LIVRO order by cast(genero_lv as char) asc, titulo_lv asc;
 
 #9. Liste todos os exemplares que foram emprestados num ano em ordem alfabética pelo seu título.
-	
+	select * from EXEMPLAR 
+	where id_exemplar in (select id_exemplar from EMPRESTIMO where year(data_emprestimo) = 2021)
+	order by titulo_lv asc;
 
 #10. Consultar os 5 exemplares mais emprestados na biblioteca (saber quais exemplares estão mais gastos).
-	
+	select x.id_exemplar, x.titulo_lv , count(*) from EXEMPLAR as x join EMPRESTIMO as e on e.id_exemplar = x.id_exemplar
+	group by id_exemplar
+	order by count(*) desc
+	limit 5;
+
 
 #11. Consultar a média das idades das pessoas que pediram emprestados livros acadêmicos.
     select avg(TIMESTAMPDIFF(year, c.data_nasc_cl, CURDATE())) from CLIENTE as c
@@ -1267,12 +1273,33 @@ insert into EMPRESTIMO
 	select * from EXEMPLAR where id_exemplar not in (select id_exemplar from EMPRESTIMO);
 
 #19. Consultar o gênero que possui mais exemplares emprestados.
-	
-
+	select genero_lv from EXEMPLAR as x 
+	join EMPRESTIMO as e on e.id_exemplar = x.id_exemplar 
+	join LIVRO as l on l.titulo_lv = x.titulo_lv 
+	group by genero_lv
+    order by count(*) desc
+    limit 1;
+    
+                            
 #20. Consultar os 5 livros que tiveram a maior quantidade de exemplares emprestados (ver os livros mais populares).
-	
+	select l.titulo_lv, count(*) from EXEMPLAR as x 
+	join EMPRESTIMO as e on e.id_exemplar = x.id_exemplar 
+	join LIVRO as l on l.titulo_lv = x.titulo_lv 
+	group by l.titulo_lv
+    order by count(*) desc
+    limit 5;
 	
 #21. Consultar os 5 livros que tiveram a menor quantidade de exemplares emprestados (ver os livros menos populares).
-	
+	select l.titulo_lv, count(*) from EXEMPLAR as x 
+	join EMPRESTIMO as e on e.id_exemplar = x.id_exemplar 
+	join LIVRO as l on l.titulo_lv = x.titulo_lv 
+	group by l.titulo_lv
+    order by count(*) asc
+    limit 5;
 
 #22. Listar os nomes e os CPFs dos clientes que pegaram mais exemplares emprestados.
+	select c.nome_cl, count(*) from EXEMPLAR as x 
+	join EMPRESTIMO as e on e.id_exemplar = x.id_exemplar 
+    join CLIENTE as c on c.cpf_cl = e.cpf_cl
+	group by c.cpf_cl
+    order by count(*) desc;
